@@ -1,4 +1,5 @@
 import {max} from "rxjs";
+import {getRandomNumber} from "../helpers/HelperLogic";
 
 export class Figure {
     positionX: number;
@@ -15,21 +16,17 @@ export class Figure {
         this.numOfSides = numOfSides;
     }
 
-    public printFigure(div: HTMLDivElement, index: number)
+    public printFigure(div: HTMLElement, index: number)
     {
         let fig = document.createElement('div');
         fig.classList.add('figure'+index);
         fig.style.background = "#" + Math.floor(Math.random()*16777215).toString(16);
-        fig.style.width = this.RandomNumber(2.5)+"px";
-        fig.style.height = this.RandomNumber(2.5)+"px";
+        fig.style.width = getRandomNumber(2.5)+"px";
+        fig.style.height = getRandomNumber(2.5)+"px";
         fig.style.border = "1px solid #" + Math.floor(Math.random()*16777215).toString(16);
-        fig.style.borderRadius = this.RandomNumber(2)+"%";
+        fig.style.borderRadius = getRandomNumber(2)+"%";
         console.log(fig);
         div.appendChild(fig);
     }
 
-    private RandomNumber(length: number) : number
-    {
-        return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
-    }
 }

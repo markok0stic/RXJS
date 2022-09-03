@@ -37,3 +37,9 @@ export const createCustomElement = (tagName: string, parent: HTMLElement, classN
 
     return el;
 }
+
+export const removeAllChildNodes = (parent: HTMLElement): void => {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
