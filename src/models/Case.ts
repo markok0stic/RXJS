@@ -1,7 +1,6 @@
 import {Figure} from "./Figure";
 
-export class Case {
+export interface Case {
     numOfFigures: number;
     listFigures : Array<Figure>;
-
 }

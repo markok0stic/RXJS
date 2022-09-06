@@ -1,0 +1,62 @@
+{
+  "figures": [
+    {
+      "id": 1,
+      "color": "red",
+      "width": 30,
+      "height": 30
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Marko",
+      "score": 32,
+      "difficulty": 2,
+      "numberOfCases": 4,
+      "reactionTimes": [
+        {
+          "id": 1,
+          "time": 320
+        },
+        {
+          "id": 2,
+          "time": 320
+        },
+        {
+          "id": 3,
+          "time": 320
+        },
+        {
+          "id": 4,
+          "time": 320
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Petar",
+      "score": 19,
+      "difficulty": 2,
+      "numberOfCases": 4,
+      "reactionTimes": [
+        {
+          "id": 5,
+          "time": 320
+        },
+        {
+          "id": 6,
+          "time": 320
+        },
+        {
+          "id": 7,
+          "time": 320
+        },
+        {
+          "id": 8,
+          "time": 320
+        }
+      ]
+    }
+  ]
+}

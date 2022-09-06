@@ -1,9 +1,11 @@
-export class User{
+import {ReactionTime} from "./ReactionTime";
+
+export interface User{
     Id: number
-    resTime : number;
-    constructor(resTime: number, Id: number)
-    {
-        this.Id = Id;
-        this.resTime = resTime;
-    }
+    resTime : number
+    name : string
+    score : number
+    difficulty:number
+    numOfCases:number
+    reactionTimes: ReactionTime[]
 }

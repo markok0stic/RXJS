@@ -1,4 +1,4 @@
-export const animateBG= () => {
+export const animateBG = () => {
     var svgns = "http://www.w3.org/2000/svg",
         rectPerRow = 13,
         size = window.innerWidth / rectPerRow,
