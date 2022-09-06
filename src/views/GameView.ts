@@ -9,8 +9,6 @@ export const initGame = (host: HTMLElement, numCases: string, difficulty: string
     switch (difficulty)
     {
         case "1":
-            let fig = new Figure(100,100,2,"asd",3);
-            fig.printFigure(div,0);
             break;
         case "2":
 
