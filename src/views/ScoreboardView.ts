@@ -1,7 +1,7 @@
 import {removeAllChildNodes} from "../helpers/HelperViews";
 import {User} from "../models/User";
 
-export const scoreboardView = (host: HTMLElement, users :User[]) => {
+export const scoreboardView = (host: HTMLElement) => {
     removeAllChildNodes(host);
     const table = document.createElement('table');
     table.classList.add('sb-table');
@@ -15,22 +15,20 @@ export const scoreboardView = (host: HTMLElement, users :User[]) => {
         tr.appendChild(td);
     })
     th.appendChild(tr);
-
     const tb = document.createElement('tbody');
-    let i:number = 1;
-
-    users.forEach(el=>{
+    tb.classList.add('sc-table-body');
+    table.appendChild(tb);
+    table.appendChild(th);
+    host.appendChild(table);
+}
+export const drawUsers = (user: User, index: number) : void => {
+    const tb:HTMLElement = document.querySelector('.sc-table-body');
         const tre = document.createElement('tr');
-        const dataArr = [i,el.name,el.score,el.difficulty,el.numOfCases]
+        const dataArr = [index,user.name,user.score,user.difficulty,user.numberOfCases]
         dataArr.forEach(el=>{
             const tdnum = document.createElement('td');
             tdnum.innerText = ""+ el;
             tre.appendChild(tdnum);
-        })
-        i++;
         tb.appendChild(tre);
-        })
-    table.appendChild(tb);
-    table.appendChild(th);
-    host.appendChild(table);
+    })
 }

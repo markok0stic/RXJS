@@ -1,9 +1,6 @@
 import {initHome} from "./views/HomeView";
 import {scoreboardView} from "./views/ScoreboardView";
 import {getUsers} from "./controllers/UsersController";
+import {loadUsers} from "./services/ScoreboardService";
 
-let useras = null;
-getUsers().subscribe((users)=>{
- useras = users;
-})
-scoreboardView(document.body,useras);
+loadUsers();

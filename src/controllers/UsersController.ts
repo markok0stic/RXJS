@@ -14,7 +14,7 @@ export const getUsers = (): Observable<User[]> => {
         .catch((err) => {
             console.error(err);
         });
-    return from(promise);
+    return from(promise).pipe();
 };
 
 export const getUsersQuery = (query: string): Observable<User[]> => {

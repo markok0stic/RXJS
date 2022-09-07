@@ -5,6 +5,6 @@ export interface User{
     name : string
     score : number
     difficulty:number
-    numOfCases:number
+    numberOfCases:number
     reactionTimes: ReactionTime[]
 }
