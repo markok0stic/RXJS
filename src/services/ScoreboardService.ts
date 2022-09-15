@@ -1,4 +1,4 @@
-import {getUsers} from "../controllers/UsersController";
+import {getUsers} from "../controllers/UserController";
 import {drawUsers, scoreboardView} from "../views/ScoreboardView";
 
 export const loadUsers = () =>{

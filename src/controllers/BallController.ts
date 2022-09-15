@@ -1,11 +1,9 @@
 import {from, Observable} from "rxjs";
-import {Figure} from "../models/Figure";
+import {Ball} from "../models/Ball";
 import {SERVER_ADDRESS} from "../config";
 
-
-
-export const getFigures = (): Observable<Figure[]> => {
-    const promise: Promise<Figure[]> = fetch(`${SERVER_ADDRESS}/figures`)
+export const getBalls = (): Observable<Ball[]> => {
+    const promise: Promise<Ball[]> = fetch(`${SERVER_ADDRESS}/ball`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error();
@@ -20,8 +18,8 @@ export const getFigures = (): Observable<Figure[]> => {
     return from(promise);
 };
 
-export const getFiguresQuery = (query: string): Observable<Figure[]> => {
-    const promise: Promise<Figure[]> = fetch(`${SERVER_ADDRESS}/users?q=${query}`)
+export const getFiguresQuery = (query: string): Observable<Ball[]> => {
+    const promise: Promise<Ball[]> = fetch(`${SERVER_ADDRESS}/ball?q=${query}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error();

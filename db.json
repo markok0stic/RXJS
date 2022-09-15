@@ -1,61 +1,202 @@
 {
-  "figures": [
+  "ball": [
     {
       "id": 1,
-      "color": "red",
-      "width": 30,
-      "height": 30
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "name": "Marko",
-      "score": 32,
-      "difficulty": 2,
-      "numberOfCases": 4,
-      "reactionTimes": [
-        {
-          "id": 1,
-          "time": 320
-        },
-        {
-          "id": 2,
-          "time": 320
-        },
-        {
-          "id": 3,
-          "time": 320
-        },
-        {
-          "id": 4,
-          "time": 320
-        }
-      ]
+      "color": "red"
     },
     {
       "id": 2,
-      "name": "Petar",
-      "score": 19,
-      "difficulty": 2,
-      "numberOfCases": 4,
-      "reactionTimes": [
-        {
-          "id": 5,
-          "time": 320
-        },
-        {
-          "id": 6,
-          "time": 320
-        },
-        {
-          "id": 7,
-          "time": 320
-        },
-        {
-          "id": 8,
-          "time": 320
-        }
+      "color": "green"
+    },
+    {
+      "id": 3,
+      "color": "blue"
+    },
+    {
+      "id": 4,
+      "color": "purple"
+    },
+    {
+      "id": 5,
+      "color": "brown"
+    },
+    {
+      "id": 6,
+      "color": "yellow"
+    },
+    {
+      "id": 7,
+      "color": "gray"
+    },
+    {
+      "id": 8,
+      "color": "black"
+    },
+    {
+      "id": 9,
+      "color": "red"
+    },
+    {
+      "id": 10,
+      "color": "green"
+    },
+    {
+      "id": 11,
+      "color": "blue"
+    },
+    {
+      "id": 12,
+      "color": "purple"
+    },
+    {
+      "id": 13,
+      "color": "brown"
+    },
+    {
+      "id": 14,
+      "color": "yellow"
+    },
+    {
+      "id": 15,
+      "color": "gray"
+    },
+    {
+      "id": 16,
+      "color": "black"
+    },
+    {
+      "id": 17,
+      "color": "red"
+    },
+    {
+      "id": 18,
+      "color": "green"
+    },
+    {
+      "id": 19,
+      "color": "blue"
+    },
+    {
+      "id": 20,
+      "color": "purple"
+    },
+    {
+      "id": 21,
+      "color": "brown"
+    },
+    {
+      "id": 22,
+      "color": "yellow"
+    },
+    {
+      "id": 23,
+      "color": "gray"
+    },
+    {
+      "id": 24,
+      "color": "black"
+    },
+    {
+      "id": 25,
+      "color": "red"
+    },
+    {
+      "id": 26,
+      "color": "green"
+    },
+    {
+      "id": 27,
+      "color": "blue"
+    },
+    {
+      "id": 28,
+      "color": "purple"
+    },
+    {
+      "id": 29,
+      "color": "brown"
+    },
+    {
+      "id": 30,
+      "color": "yellow"
+    },
+    {
+      "id": 31,
+      "color": "gray"
+    },
+    {
+      "id": 32,
+      "color": "black"
+    },
+    {
+      "id": 33,
+      "color": "red"
+    },
+    {
+      "id": 34,
+      "color": "green"
+    },
+    {
+      "id": 35,
+      "color": "blue"
+    },
+    {
+      "id": 36,
+      "color": "purple"
+    },
+    {
+      "id": 37,
+      "color": "brown"
+    },
+    {
+      "id": 38,
+      "color": "yellow"
+    },
+    {
+      "id": 39,
+      "color": "gray"
+    },
+    {
+      "id": 40,
+      "color": "black"
+    },
+    {
+      "id": 41,
+      "color": "red"
+    },
+    {
+      "id": 42,
+      "color": "green"
+    },
+    {
+      "id": 43,
+      "color": "blue"
+    },
+    {
+      "id": 44,
+      "color": "purple"
+    },
+    {
+      "id": 45,
+      "color": "brown"
+    },
+    {
+      "id": 46,
+      "color": "yellow"
+    },
+    {
+      "id": 47,
+      "color": "gray"
+    },
+    {
+      "id": 48,
+      "color": "black"
+    }
+  ],
+  "round": [
+    {
+      "id": 1,
+      "list": [
       ]
     }
   ]
