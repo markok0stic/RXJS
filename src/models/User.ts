@@ -1,7 +1,5 @@
 export interface User{
-    Id: number
+    id: number
     name : string
-    score : number
-    difficulty:number
-    numberOfCases:number
+    balance : number
 }

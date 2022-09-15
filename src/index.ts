@@ -1,3 +1,3 @@
 import {initHome} from "./views/HomeView";
 
-initHome(document.body);
+initHome(document.querySelector('.mainContainer'));

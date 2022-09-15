@@ -3,7 +3,7 @@ import {User} from "../models/User";
 import {SERVER_ADDRESS} from "../config";
 
 export const getUsers = (): Observable<User[]> => {
-    const promise: Promise<User[]> = fetch(`${SERVER_ADDRESS}/users`)
+    const promise: Promise<User[]> = fetch(`${SERVER_ADDRESS}/user`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error();
@@ -18,7 +18,7 @@ export const getUsers = (): Observable<User[]> => {
 };
 
 export const getUsersQuery = (query: string): Observable<User[]> => {
-    const promise: Promise<User[]> = fetch(`${SERVER_ADDRESS}/figures?q=${query}`)
+    const promise: Promise<User[]> = fetch(`${SERVER_ADDRESS}/user?q=${query}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error();
