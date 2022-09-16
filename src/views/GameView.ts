@@ -10,3 +10,10 @@ export const drawBalls = (ball : Ball, host: HTMLElement) : void =>{
 export const drawRound = (host:HTMLElement,value:number) : void => {
 
 }
+
+export const activateBall = (ballId: number) :void =>{
+    console.log(ballId);
+   document.querySelectorAll('div[id]')
+       .item(ballId - 1)
+       .classList.add('active');
+}
