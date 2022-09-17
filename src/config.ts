@@ -22,3 +22,12 @@ export const USER : User = {
     balance: 1000,
     name: "Marko"
 }
+
+export const SEC: number = 1000;
+export const INTERVAL:number = SEC;
+export const MINUTES: number = 1.5;
+export const TIME:number = MINUTES * SEC * 60;
+
+
+export const CURRENT: number = 0;
+export const TIMER: number = TIME;

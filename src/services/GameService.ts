@@ -25,14 +25,13 @@ export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
             bet: 0,
             num: 0
         };
-        let v = from(el.parentElement.querySelectorAll('.num')).pipe(map(el=>parseInt(el.innerHTML))).subscribe(el=>t.numbers.push(el));
+        from(el.parentElement.querySelectorAll('.num')).pipe(map(el=>parseInt(el.innerHTML))).subscribe(el=>t.numbers.push(el));
         t.bet = parseInt((el.parentElement.querySelector('.t-bet-input') as HTMLInputElement).value)
         t.num = parseInt((el.parentElement.getAttribute('t-id')))
         res(t);
         USER.balance -= t.bet;
     })
 }
-
 
 export const startGame = () : void => {
     let divs = document.querySelectorAll('.b-conf-active')
