@@ -1,5 +1,5 @@
 import {debounceTime, from, interval, map, Observable, Subscription, take} from "rxjs";
-import {BALL_INTERVAL, TICKETS} from "../config";
+import {BALL_INTERVAL, TICKETS, USER} from "../config";
 import {arrayRemove, arrayShuffle, getRandomNumber, randomNumber} from "../helpers/HelperLogic";
 import {Ticket} from "../models/Ticket";
 
@@ -29,6 +29,7 @@ export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
         t.bet = parseInt((el.parentElement.querySelector('.t-bet-input') as HTMLInputElement).value)
         t.num = parseInt((el.parentElement.getAttribute('t-id')))
         res(t);
+        USER.balance -= t.bet;
     })
 }
 
