@@ -1,7 +1,7 @@
 import {initHome} from "./views/HomeView";
 import {startGame} from "./services/GameService";
-import {roundTime} from "./config";
+import {ROUND_TIME} from "./config";
 
 initHome(document.querySelector('.mainContainer'));
-startGame()
-//setInterval(startGame,roundTime + 1000);
+
+setTimeout(startGame,5000);
