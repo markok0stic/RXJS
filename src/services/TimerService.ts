@@ -1,22 +1,9 @@
-import {timer} from 'rxjs';
+import {filter, map, Observable, switchMap, timer} from 'rxjs';
 import {takeWhile, tap} from 'rxjs/operators';
 import {SEC, TIME} from "../config";
 import {startGame} from "./GameService";
 import {updateDomTimer} from "../views/HomeView";
 
-export const scheduleGameAndStart = () => {
-    let counter = 10;
-    timer(SEC, SEC)
-        .pipe(
-            takeWhile(() => counter > 0),
-            tap(() => counter--)
-        )
-        .subscribe(() => {
-            remainingTimeUpdate(counter);
-            if (counter <= 0)
-                startGame()
-        });
-}
 
 export const remainingTimeUpdate = (seconds : number) : void => {
     let mins: string = Math.floor(seconds / 60 ).toString();
@@ -29,4 +16,19 @@ export const remainingTimeUpdate = (seconds : number) : void => {
     updateDomTimer(sec,mins);
 }
 
+export const scheduleGameAndStart = () : void => {
+    startTimer(TIME).subscribe(x=>{ if (x <= 0) startGame()})
+}
 
+
+export const startTimer = (time : number) : Observable<number>=>
+{
+    let counter = time;
+    return timer(SEC, SEC)
+        .pipe(
+            takeWhile(() => counter > 0),
+            tap(() => counter--),
+            tap(()=>{remainingTimeUpdate(counter)}),
+            map(()=> counter)
+        )
+}
