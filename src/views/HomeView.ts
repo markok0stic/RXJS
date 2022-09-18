@@ -8,8 +8,8 @@ import {scheduleGameAndStart} from "../services/TimerService";
 
 export const initHome = (host : HTMLElement):void => {
     removeAllChildNodes(host).then(()=>{
-       /* while (TICKETS.length > 0)
-            TICKETS.pop();*/
+       while (TICKETS.length > 0)
+            TICKETS.pop();
         TICKET_TO_BE_POPULATED.numbers = [];
 
         const sector1 = createDiv(host,'sector1');
@@ -102,7 +102,6 @@ export const drawTicket = () : void => {
 
 export const updateTicketNumbers = (num:number, reset? : boolean) => {
     let divTickets = document.querySelectorAll('div[t-id]')
-    console.log(divTickets);
     let ticket : HTMLElement;
     divTickets.forEach(el=>{
         if(el.classList.contains('t-active'))

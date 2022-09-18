@@ -185,6 +185,7 @@ body{
     align-items: center;
     width: 30%;
     border-radius: 10px;
+    overflow:scroll;
 }
 .g-div-plc,.g-div-plc-m{
     width: 33%;
@@ -299,6 +300,7 @@ body{
     border-radius: 100%;
 }
 .t-nums{
+
     height: 100%;
     border-radius: 100%;
 }
