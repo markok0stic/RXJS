@@ -7,10 +7,11 @@ import {listenClickOnBall} from "../services/TicketService";
 import {scheduleGameAndStart} from "../services/TimerService";
 
 export const initHome = (host : HTMLElement):void => {
-    while (TICKETS.length > 0)
-        TICKETS.pop();
-    TICKET_TO_BE_POPULATED.numbers = [];
     removeAllChildNodes(host).then(()=>{
+       /* while (TICKETS.length > 0)
+            TICKETS.pop();*/
+        TICKET_TO_BE_POPULATED.numbers = [];
+
         const sector1 = createDiv(host,'sector1');
         const sector2 = createDiv(host,'sector2');
 

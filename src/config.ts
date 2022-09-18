@@ -19,7 +19,7 @@ export const TICKETS : Ticket[] = []
 
 export const USER : User = {
     id : 1,
-    balance: 1000,
+    balance: 10000,
     name: "Marko"
 }
 
