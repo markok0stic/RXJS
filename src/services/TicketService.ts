@@ -19,13 +19,9 @@ export const updateTickets = (number : number) : void => {
         TICKET_TO_BE_POPULATED.numbers.push(number);
         updateTicketNumbers(number);
     }
-    console.log(TICKET_TO_BE_POPULATED.numbers);
 }
 
-
-
 export const listenClickOnBall = () : void =>{
-    console.log("asdas")
     drawTicket();
     fromEvent(document.querySelectorAll('.ballHandler'),'click')
         .pipe(
@@ -54,7 +50,6 @@ export const OnTicketActive = () : void =>{
             switchMap(el=> el.querySelectorAll('.num')),
             filter(nums => nums != undefined),
             map(nums => {
-                console.log(parseInt(nums.innerHTML));
                 activateBall(parseInt(nums.innerHTML));
                 TICKET_TO_BE_POPULATED.numbers.push(parseInt(nums.innerHTML));
             })

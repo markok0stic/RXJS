@@ -1,29 +1,45 @@
-import {debounceTime, from, interval, map, Observable, Subscription, take} from "rxjs";
-import {BALL_INTERVAL, ROUND_NUMBER, ROUND_TIME, TICKETS, USER} from "../config";
+import {debounceTime, filter, from, fromEvent, interval, map, Observable, Subscription, take, zip} from "rxjs";
+import {BALL_INTERVAL, MULTIPLIERS, ROUND_TIME, SUBJECT, SUBJECT_TICKET, TICKETS, USER} from "../config";
 import {arrayRemove, arrayShuffle, getRandomNumber, randomNumber} from "../helpers/HelperLogic";
 import {Ticket} from "../models/Ticket";
-import {initGameView} from "../views/GameView";
-import {updateDomTimer} from "../views/HomeView";
+import {
+    checkIfPassedTicket,
+    drawBallInBigBall,
+    drawIntoBallHolder,
+    initGameView,
+    markNumberOnTicket, setTicketNotPassed, updateUserBalance
+} from "../views/GameView";
+import {initHome, updateDomTimer} from "../views/HomeView";
 import {startTimer} from "./TimerService";
+import {getBalls} from "../controllers/BallController";
+import {Ball} from "../models/Ball";
+import {tap} from "rxjs/operators";
 
 export const startDraw = () : Subscription => {
-    let arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48];
+    let array : Ball[]
+    getBalls().subscribe((balls) =>{array = balls});
+
    return new Observable( (gen) =>{
        setInterval( () => {
            gen.next(
-               arr.splice(
-                   arrayShuffle(arr).indexOf(
-                       randomNumber(1,arr.length)
+               array.splice(
+                   arrayShuffle(array).indexOf(
+                       randomNumber(1,array.length)
                    ),1)
                    [0]
            );
        }, BALL_INTERVAL)
-   }).pipe(take(35))
+   }).pipe(
+       take(35),
+       map(x=>x as Ball)
+   )
        .subscribe((x)=>{
-           console.log(x)
-           if (arr.length  === 13)
-               //endgame{}
-           {console.log('end')}
+           drawBallInBigBall(x)
+           if (array.length  === 13)
+           {
+               setTicketNotPassed();
+               setTimeout(()=>{initHome(document.querySelector('.mainContainer'))},5000)
+           }
    });
 }
 
@@ -49,7 +65,6 @@ export const prepareTickets = () :Promise<void> =>{
         divs.forEach(el=>{
             prepareUserData(el as HTMLElement).then(t=>{
                 TICKETS.push(t)
-                console.log(TICKETS);
             })
         });
         res()})
@@ -65,3 +80,27 @@ export const startGame = () : void => {
     });
 }
 
+export const listenBigBall = ()  : void => {
+    let phIndex: number = 0;
+    SUBJECT.subscribe(ball=>{
+        phIndex++;
+        ball.num = phIndex;
+        SUBJECT_TICKET.next(ball)
+        drawIntoBallHolder(ball,phIndex);
+    })
+}
+
+export const listenTicket = (): void => {
+    SUBJECT_TICKET.subscribe(ball=>{
+            TICKETS.forEach(el => {
+                if (el.numbers.includes(ball.id)) {
+                    markNumberOnTicket(ball.id).then(()=>{
+                        if(checkIfPassedTicket(el.num))
+                        {
+                            USER.balance += el.bet * MULTIPLIERS[ball.num]
+                        }
+                    })
+                }
+            })
+    })
+}

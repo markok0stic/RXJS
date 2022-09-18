@@ -1,29 +1,37 @@
-import {createDiv, createInput, createLabel} from "../helpers/HelperViews";
+import {createDiv, createInput, createLabel, removeAllChildNodes} from "../helpers/HelperViews";
 import {getBalls} from "../controllers/BallController";
 import {User} from "../models/User";
 import {Ball} from "../models/Ball";
-import {MIN_BET, ROUND_NUMBER, TICKET_TO_BE_POPULATED, USER} from "../config";
+import {MIN_BET, TICKET_TO_BE_POPULATED, TICKETS, USER} from "../config";
 import {listenClickOnBall} from "../services/TicketService";
+import {scheduleGameAndStart} from "../services/TimerService";
 
 export const initHome = (host : HTMLElement):void => {
-    const sector1 = createDiv(host,'sector1');
-    const sector2 = createDiv(host,'sector2');
+    while (TICKETS.length > 0)
+        TICKETS.pop();
+    TICKET_TO_BE_POPULATED.numbers = [];
+    removeAllChildNodes(host).then(()=>{
+        const sector1 = createDiv(host,'sector1');
+        const sector2 = createDiv(host,'sector2');
 
-    initUi(sector2,USER);
+        initUi(sector2,USER);
 
-    const title = createDiv(sector1,'divTitle');
-    createLabel(title,'title').innerText = 'Place Bet';
-    createLabel(title,'lblTimer').innerHTML = `
+        const title = createDiv(sector1,'divTitle');
+        createLabel(title,'title').innerText = 'Place Bet';
+        createLabel(title,'lblTimer').innerHTML = `
     <span class="minutes"></span>
     <span>:</span>
     <span class="seconds"></span>`;
-    createLabel(title,'r-title').innerText = '#' + ROUND_NUMBER;
+        createLabel(title,'r-title').innerText = '#';
 
-    const db = createDiv(sector1,'divBalls');
+        const db = createDiv(sector1,'divBalls');
 
-    getBalls().subscribe((balls) => {
-        drawBallHandlerWithBall(db, balls).then(listenClickOnBall);
-    });
+        getBalls().subscribe((balls) => {
+            drawBallHandlerWithBall(db, balls).then(listenClickOnBall);
+        });
+
+        setTimeout(scheduleGameAndStart,200);
+    })
 }
 export const drawBallHandlerWithBall = (host: HTMLElement,balls:Ball[]) : Promise<void> =>{
     return new Promise ( (resolve) => {

@@ -159,11 +159,6 @@ body{
     display: block;
 }
 
-
-
-
-
-
 .timer{
     display: flex;
     flex-direction: row;
@@ -223,6 +218,10 @@ body{
 .g-bhl{
     width: 50px;
     height: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     border-radius: 100%;
     background-color: #f8f8f8;
     box-shadow: 0 3px 12px #0000001F;
@@ -256,6 +255,24 @@ body{
     border-radius: 100%;
     align-self: center;
     box-shadow: 0px 5px 12px #0000001F;
+    font-size: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .25s ease-in-out,box-shadow .25s ease-in-out ;
+}
+.centerBall{
+    display: flex;
+    background-color: white;
+    border: 1px solid;
+    box-shadow: 0px 5px 12px #0000001F;
+    border-radius: 100%;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 .g-div-bb-balls{
     display: flex;
@@ -270,4 +287,27 @@ body{
 }
 .g-bhl:nth-child(3) {
     margin-top: 5em;
+}
+.bh-b-placed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    color: black;
+    border-radius: 100%;
+}
+.t-nums{
+    height: 100%;
+    border-radius: 100%;
+}
+.t-passed{
+    background-color: #c5e7a6;
+}
+.t-marked-num{
+    background-color: #b77373;
+}
+.t-failed{
+    background-color: #e09999;
 }

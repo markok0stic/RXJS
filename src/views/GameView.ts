@@ -1,5 +1,15 @@
 import {createDiv, createInput, createLabel, removeAllChildNodes} from "../helpers/HelperViews";
-import {ARRAYIDS, MIN_BET, ROUND_NUMBER, TICKET_TO_BE_POPULATED, TICKETS, USER} from "../config";
+import {
+    ARRAY_IDS,
+    MIN_BET,
+    SUBJECT,
+    TICKET_TO_BE_POPULATED,
+    TICKETS,
+    USER
+} from "../config";
+import {Ball} from "../models/Ball";
+import {fromEvent, map, Observable, startWith, Subject} from "rxjs";
+import {listenBigBall, listenTicket} from "../services/GameService";
 
 export const initGameView = (host: HTMLElement) : void =>{
     removeAllChildNodes(host).then(()=>{
@@ -31,7 +41,7 @@ export const createSector2 = (host: HTMLElement) : void => {
     <span>:</span>
     <span class="seconds"></span>
     </div>`;
-    createLabel(roundInfo,'lbl').innerHTML = '#' + ROUND_NUMBER
+    createLabel(roundInfo,'lbl').innerHTML = '#' + 0
     let divT = createDiv(sector2,'u-div');
     drawTickets(sector2);
     createLabel(divT,'r-title').innerHTML = 'Balance: ' + USER.balance
@@ -62,7 +72,7 @@ export const drawBallHoldersWithMultiplier = (host:HTMLElement, multipliers: num
         let bHolder = createDiv(host,'g-b-holder')
         bHolder.style.height = h.toString() + '%'
         let dibBall = createDiv(bHolder,'g-bhl')
-        dibBall.setAttribute('ball-id', (ARRAYIDS[arrayx][multipliers.indexOf(el)] + offset).toString())
+        dibBall.setAttribute('ball-id', (ARRAY_IDS[arrayx][multipliers.indexOf(el)] + offset).toString())
         dibBall.setAttribute('mult', el.toString())
         createDiv(bHolder,'g-mul-l').innerHTML = el.toString()
     })
@@ -75,6 +85,79 @@ export const drawMiddleBall = (host:HTMLElement, multiplier:number) : void =>{
     {
         createDiv(divBalls,'g-bhl').setAttribute('ball-id',i.toString());
     }
+    listenBigBall()
+    listenTicket();
 }
 
-export const drawBallInBigBall = (num:number) : void
+export const drawBallInBigBall = (ball:Ball) : void => {
+    let bigBall = document.querySelector('.g-bb-big-ball') as HTMLElement;
+    bigBall.innerHTML = `<div class="centerBall"> ${ball.id.toString()} </div>`;
+    SUBJECT.next(ball);
+    bigBall.style.background = ball.color;
+    bigBall.style.boxShadow = `0px 5px 12px #0000001F`;
+    setTimeout(clearBigBall,2000);
+}
+
+export const clearBigBall = () : void => {
+    let bigBall = document.querySelector('.g-bb-big-ball') as HTMLElement;
+    bigBall.innerHTML = ``;
+    bigBall.style.background = 'white';
+}
+
+export const drawIntoBallHolder = (ball: Ball, phIndex:number) : void => {
+    let bh =  document.querySelectorAll('div[ball-id]')
+    bh.forEach(el=>{
+        if(parseInt(el.getAttribute('ball-id')) == phIndex)
+        {
+            let bel = el as HTMLElement;
+            bel.innerHTML = `<div class="bh-b-placed">${ball.id.toString()}</div>`
+            bel.style.background = ball.color;
+        }
+    })
+}
+export const markNumberOnTicket = (numberToMark: number) : Promise<void> => {
+    return new Promise<void> ((res)=>{
+        let tickets = document.querySelectorAll('div[t-id]')
+        tickets.forEach(el=>{
+            el.querySelectorAll('.t-nums').forEach(num=>{
+                if (parseInt(num.innerHTML) == numberToMark)
+                {
+                    let div = num as HTMLElement
+                    div.classList.add('t-marked-num');
+                }
+            })
+        })
+        res()
+    })
+}
+
+export const checkIfPassedTicket = (tid: number) : boolean => {
+    let tickets = document.querySelectorAll('div[t-id]')
+    tickets.forEach(el=>{
+        if (parseInt(el.getAttribute('t-id')) === tid)
+        {
+            let t = el as HTMLElement
+            if (el.querySelectorAll('.t-marked-num').length == 6)
+            {
+                t.classList.add('t-passed');
+                return true
+            }
+        }
+    })
+    return false
+}
+
+export const setTicketNotPassed = () : void => {
+    let tickets = document.querySelectorAll('.u-ticket')
+    tickets.forEach(el=>{
+        if(el.classList.length < 2)
+        {
+            el.classList.add('t-failed');
+        }
+    })
+}
+
+export const updateUserBalance = () : void => {
+    let bal = document.querySelector('.r-title') as HTMLElement
+    bal.innerText = 'Balance: '+ USER.balance.toString();
+}
