@@ -95,11 +95,14 @@ export const listenTicket = (): void => {
             TICKETS.forEach(el => {
                 if (el.numbers.includes(ball.id)) {
                     markNumberOnTicket(ball.id).then(()=>{
-                        if(checkIfPassedTicket(el.num))
-                        {
-                            USER.balance += el.bet * MULTIPLIERS[ball.num]
-                            updateUserBalance();
-                        }
+                       checkIfPassedTicket(el.num).then(res=>{
+                           if (res === true)
+                           {
+                               USER.balance += el.bet * MULTIPLIERS[ball.num]
+                               updateUserBalance();
+                           }
+                       })
+
                     })
                 }
             })

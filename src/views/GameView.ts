@@ -131,20 +131,22 @@ export const markNumberOnTicket = (numberToMark: number) : Promise<void> => {
     })
 }
 
-export const checkIfPassedTicket = (tid: number) : boolean => {
-    let tickets = document.querySelectorAll('div[t-id]')
-    tickets.forEach(el=>{
-        if (parseInt(el.getAttribute('t-id')) === tid)
-        {
-            let t = el as HTMLElement
-            if (el.querySelectorAll('.t-marked-num').length == 6)
+export const checkIfPassedTicket = (tid: number) : Promise<boolean> => {
+    return new Promise<boolean> ((res)=>{
+        let tickets = document.querySelectorAll('div[t-id]')
+        tickets.forEach(el=>{
+            if (parseInt(el.getAttribute('t-id')) === tid)
             {
-                t.classList.add('t-passed');
-                return true
+                let t = el as HTMLElement
+                if (el.querySelectorAll('.t-marked-num').length == 6)
+                {
+                    t.classList.add('t-passed');
+                    res(true)
+                }
             }
-        }
+        })
+        res(false)
     })
-    return false
 }
 
 export const setTicketNotPassed = () : void => {
@@ -159,5 +161,6 @@ export const setTicketNotPassed = () : void => {
 
 export const updateUserBalance = () : void => {
     let bal = document.querySelector('.r-title') as HTMLElement
-    bal.innerText = 'Balance: '+ USER.balance.toString();
+    console.log(USER.balance);
+    bal.innerHTML = 'Balance: '+ USER.balance.toString();
 }
