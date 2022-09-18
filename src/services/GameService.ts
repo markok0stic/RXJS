@@ -48,13 +48,14 @@ export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
         let t : Ticket= {
             numbers: [],
             bet: 0,
-            num: 0
+            num: 0,
+            passed:false
         };
         from(el.parentElement.querySelectorAll('.num')).pipe(map(el=>parseInt(el.innerHTML))).subscribe(el=>t.numbers.push(el));
         t.bet = parseInt((el.parentElement.querySelector('.t-bet-input') as HTMLInputElement).value)
         t.num = parseInt((el.parentElement.getAttribute('t-id')))
-        res(t);
         USER.balance -= t.bet;
+        res(t);
     })
 }
 
@@ -93,17 +94,20 @@ export const listenBigBall = ()  : void => {
 export const listenTicket = (): void => {
     SUBJECT_TICKET.subscribe(ball=>{
             TICKETS.forEach(el => {
-                if (el.numbers.includes(ball.id)) {
-                    markNumberOnTicket(ball.id).then(()=>{
-                       checkIfPassedTicket(el.num).then(res=>{
-                           if (res === true)
-                           {
-                               USER.balance += el.bet * MULTIPLIERS[ball.num]
-                               updateUserBalance();
-                           }
-                       })
+                if (!el.passed) {
+                    if (el.numbers.includes(ball.id)) {
+                        markNumberOnTicket(ball.id).then(() => {
+                            checkIfPassedTicket(el.num).then(res => {
+                                if (res === true) {
+                                    USER.balance += el.bet * MULTIPLIERS[ball.num]
+                                    console.log(ball.num)
+                                    updateUserBalance();
+                                    el.passed = true;
+                                }
+                            })
 
-                    })
+                        })
+                    }
                 }
             })
     })

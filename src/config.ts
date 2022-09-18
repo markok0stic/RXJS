@@ -12,7 +12,8 @@ export const MIN_BET = 20
 export const TICKET_TO_BE_POPULATED : Ticket = {
     numbers: [],
     bet: MIN_BET,
-    num: 0
+    num: 0,
+    passed: false
 };
 export const TICKETS : Ticket[] = []
 

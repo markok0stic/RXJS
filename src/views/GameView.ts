@@ -101,7 +101,7 @@ export const drawBallInBigBall = (ball:Ball) : void => {
 export const clearBigBall = () : void => {
     let bigBall = document.querySelector('.g-bb-big-ball') as HTMLElement;
     bigBall.innerHTML = ``;
-    bigBall.style.background = 'white';
+    bigBall.style.background = '#f8f8f8';
 }
 
 export const drawIntoBallHolder = (ball: Ball, phIndex:number) : void => {
