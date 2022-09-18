@@ -41,7 +41,7 @@ export const createSector2 = (host: HTMLElement) : void => {
     <span>:</span>
     <span class="seconds"></span>
     </div>`;
-    createLabel(roundInfo,'lbl').innerHTML = '#' + 0
+    createLabel(roundInfo,'lbl')
     let divT = createDiv(sector2,'u-div');
     drawTickets(sector2);
     createLabel(divT,'r-title').innerHTML = 'Balance: ' + USER.balance

@@ -22,7 +22,7 @@ export const initHome = (host : HTMLElement):void => {
     <span class="minutes"></span>
     <span>:</span>
     <span class="seconds"></span>`;
-        createLabel(title,'r-title').innerText = '#';
+        createLabel(title,'r-title')
 
         const db = createDiv(sector1,'divBalls');
 

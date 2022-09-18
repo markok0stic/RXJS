@@ -1,12 +1,9 @@
 import {Ticket} from "./models/Ticket";
 import {User} from "./models/User";
 import {Ball} from "./models/Ball";
-import {Observable, Subject} from "rxjs";
-import {Round} from "./models/Round";
+import {Subject} from "rxjs";
 
 export const SERVER_ADDRESS = "http://localhost:3000";
-
-
 export const BALL_INTERVAL = 3000;
 export const ROUND_TIME = 35 * BALL_INTERVAL/1000 + 2;
 

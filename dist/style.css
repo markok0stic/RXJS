@@ -303,10 +303,10 @@ body{
     border-radius: 100%;
 }
 .t-passed{
-    background-color: #c5e7a6;
+    background-color: #a9c990;
 }
 .t-marked-num{
-    background-color: #b77373;
+    background-color: #c5e7a6;
 }
 .t-failed{
     background-color: #e09999;

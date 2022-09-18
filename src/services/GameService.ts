@@ -98,6 +98,7 @@ export const listenTicket = (): void => {
                         if(checkIfPassedTicket(el.num))
                         {
                             USER.balance += el.bet * MULTIPLIERS[ball.num]
+                            updateUserBalance();
                         }
                     })
                 }
