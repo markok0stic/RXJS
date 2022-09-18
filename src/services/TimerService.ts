@@ -1,47 +1,32 @@
-import {INTERVAL, SEC, TIMER} from "../config";
-import {BehaviorSubject, map, NEVER, startWith, switchMap, takeWhile, tap, timer} from "rxjs";
+import {timer} from 'rxjs';
+import {takeWhile, tap} from 'rxjs/operators';
+import {SEC, TIME} from "../config";
+import {startGame} from "./GameService";
+import {updateDomTimer} from "../views/HomeView";
 
-export const toMinutes = (ms: number) =>
-    Math.floor(ms / SEC / 60);
-
-const toSeconds = (ms: number) =>
-    Math.floor(ms / SEC) % 60;
-
-const toSecondsString = (ms: number) => {
-    const seconds = toSeconds(ms);
-    return seconds < 10 ? `0${seconds}` : seconds.toString();
+export const scheduleGameAndStart = () => {
+    let counter = 10;
+    timer(SEC, SEC)
+        .pipe(
+            takeWhile(() => counter > 0),
+            tap(() => counter--)
+        )
+        .subscribe(() => {
+            remainingTimeUpdate(counter);
+            if (counter <= 0)
+                startGame()
+        });
 }
 
-const toMs = (t: number) => t * INTERVAL;
+export const remainingTimeUpdate = (seconds : number) : void => {
+    let mins: string = Math.floor(seconds / 60 ).toString();
+    let sec: string = (seconds - (parseInt(mins) * 60)).toString();
 
-const currentInterval = () => TIMER / INTERVAL;
+    if (mins.length <= 1)
+        mins = "0"+mins;
+    if (sec.length <= 1)
+        sec = "0"+sec;
+    updateDomTimer(sec,mins);
+}
 
-const toRemainingSeconds = (t: number) => currentInterval() - t;
-
-export const toggle = new BehaviorSubject(true);
-export const remainingSeconds = toggle.pipe(
-    switchMap((running: boolean) => {
-        return running ? timer(0, INTERVAL) : NEVER;
-    }),
-    map(toRemainingSeconds),
-    takeWhile(t => t >= 0)
-);
-
-let current;
-const ms$ = TIMER.pipe(
-    map(toMs),
-    tap(t => current = t)
-);
-
-
-export const minutes = ms$.pipe(
-    map(toMinutesDisplay),
-    map(s => s.toString()),
-    startWith(toMinutesDisplay(time).toString())
-);
-
-const seconds$ = ms$.pipe(
-    map(toSecondsDisplayString),
-    startWith(toSecondsDisplayString(time).toString())
-);
 

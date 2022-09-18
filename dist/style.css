@@ -14,7 +14,7 @@ body{
     flex-direction: row;
     background: linear-gradient(to right, #f8f8f8, white);
     box-shadow: 0 3px 12px #0000001F;
-    border-radius: 4px;
+    border-radius: 10px;
     flex-wrap: wrap;
 }
 .sector1,.sector2{
@@ -85,6 +85,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #f8f8f8;
+    border-radius: 10px;
 }
 .u-div{
     width: 95%;
@@ -156,4 +157,32 @@ body{
 }
 .b-conf-active{
     display: block;
+}
+
+
+
+.timer{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    align-items: center;
+    justify-content: space-around;
+    height: 5%;
+    font-size: 20px;
+}
+.g-sector1,.g-sector2{
+    display: flex;
+}
+.g-sector1{
+    width: 70%;
+    min-width: 300px;
+    background-color: #fffcfc;
+}
+.g-sector2{
+    font-weight: 500;
+    background-color: #f8f8f8;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    border-radius: 10px;
 }

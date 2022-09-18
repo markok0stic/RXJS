@@ -2,8 +2,9 @@ import {debounceTime, from, interval, map, Observable, Subscription, take} from 
 import {BALL_INTERVAL, TICKETS, USER} from "../config";
 import {arrayRemove, arrayShuffle, getRandomNumber, randomNumber} from "../helpers/HelperLogic";
 import {Ticket} from "../models/Ticket";
+import {initGameView} from "../views/GameView";
 
-export const prepareGame = () : Subscription => {
+export const startDraw = () : Subscription => {
     let arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48];
    return new Observable( (gen) =>{
        setInterval( () => {
@@ -15,7 +16,7 @@ export const prepareGame = () : Subscription => {
                    [0]
            );
        }, BALL_INTERVAL)
-   }).pipe(take(35)).subscribe();
+   }).pipe(take(35)).subscribe(x=>console.log(x));
 }
 
 export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
@@ -33,16 +34,23 @@ export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
     })
 }
 
-export const startGame = () : void => {
-    let divs = document.querySelectorAll('.b-conf-active')
+export const prepareTickets = () :Promise<void> =>{
+    return new Promise ((res)=>{
+        let divs = document.querySelectorAll('.b-conf-active')
 
-    divs.forEach(el=>{
-        prepareUserData(el as HTMLElement).then(t=>{
-            TICKETS.push(t)
-            console.log(TICKETS);
+        divs.forEach(el=>{
+            prepareUserData(el as HTMLElement).then(t=>{
+                TICKETS.push(t)
+                console.log(TICKETS);
             })
-    });
+        });
+        res()})
+}
 
-    prepareGame();
+export const startGame = () : void => {
+    prepareTickets().then(()=>{
+        initGameView(document.querySelector('.mainContainer'));
+        setTimeout(startDraw,2500)
+    });
 }
 

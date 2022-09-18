@@ -13,7 +13,7 @@ export const initHome = (host : HTMLElement):void => {
 
     const title = createDiv(sector1,'divTitle');
     createLabel(title,'title').innerText = 'Place Bet';
-    createLabel(title,'timer').innerHTML = `
+    createLabel(title,'lblTimer').innerHTML = `
     <span class="minutes"></span>
     <span>:</span>
     <span class="seconds"></span>`;
@@ -149,4 +149,9 @@ export const removeEmptyTickets = () : void => {
         if(el.querySelector('.t-numbers').children.length <= 0)
             mainDiv.removeChild(el);
     });
+}
+
+export const updateDomTimer = (sec: string, mins: string) : void =>{
+    document.querySelector('.minutes').innerHTML = mins;
+    document.querySelector('.seconds').innerHTML = sec;
 }
