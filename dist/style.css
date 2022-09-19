@@ -150,7 +150,7 @@ body{
 .t-numbers{
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 40%;
     text-align: center;
 }
 .btnConf{
