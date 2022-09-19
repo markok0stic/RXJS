@@ -102,7 +102,7 @@ export const listenTicket = (): void => {
                                     USER.balance += el.bet * MULTIPLIERS[ball.num - 1]
                                     console.log(ball.num)
                                     console.log(el.bet)
-                                    console.log(MULTIPLIERS[ball.num])
+                                    console.log(MULTIPLIERS[ball.num - 1])
                                     updateUserBalance();
                                     el.passed = true;
                                 }
