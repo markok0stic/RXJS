@@ -70,12 +70,15 @@ export const activateBall = (ballId: number) :void =>{
         ball.classList.add('active');
 }
 export const activateTicket = (ticketId: number) :void =>{
-    let ticket =  document.querySelectorAll('div[t-id]').item(ticketId)
     resetActiveTickets();
-    if (ticket.classList.contains('t-active'))
-        ticket.classList.remove('t-active')
-    else
-        ticket.classList.add('t-active');
+    let ticket =  document.querySelectorAll('div[t-id]')
+    ticket.forEach(el=>{
+        if(parseInt(el.getAttribute('t-id')) === ticketId)
+        if (el.classList.contains('t-active'))
+            el.classList.remove('t-active')
+        else
+            el.classList.add('t-active');
+    })
 }
 
 export const drawTicket = () : void => {
