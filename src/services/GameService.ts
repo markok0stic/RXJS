@@ -99,7 +99,7 @@ export const listenTicket = (): void => {
                         markNumberOnTicket(ball.id).then(() => {
                             checkIfPassedTicket(el.num).then(res => {
                                 if (res === true) {
-                                    USER.balance += el.bet * MULTIPLIERS[ball.num]
+                                    USER.balance += el.bet * MULTIPLIERS[ball.num - 1]
                                     console.log(ball.num)
                                     console.log(el.bet)
                                     console.log(MULTIPLIERS[ball.num])

@@ -150,7 +150,8 @@ body{
 .t-numbers{
     display: flex;
     flex-direction: row;
-    column-gap: 1em;
+    width: 60%;
+    text-align: center;
 }
 .btnConf{
     display: none;
@@ -299,10 +300,17 @@ body{
     color: black;
     border-radius: 100%;
 }
-.t-nums{
-
+.t-nums,.num{
+    width: 16.6%;
+    position: relative;
     height: 100%;
     border-radius: 100%;
+}
+.numb{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .t-passed{
     background-color: #c5e7a6;
