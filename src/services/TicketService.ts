@@ -48,10 +48,9 @@ export const OnTicketActive = () : void =>{
             }),
             filter(el => el != undefined),
             switchMap(el=> el.querySelectorAll('.num')),
-            filter(nums => nums != undefined),
-            map(nums => {
-                activateBall(parseInt(nums.innerHTML));
-                TICKET_TO_BE_POPULATED.numbers.push(parseInt(nums.innerHTML));
-            })
-        ).subscribe()
+            filter(nums => nums != undefined)
+        ).subscribe(nums => {
+        activateBall(parseInt(nums.innerHTML));
+        TICKET_TO_BE_POPULATED.numbers.push(parseInt(nums.innerHTML));
+    })
 }

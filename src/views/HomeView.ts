@@ -8,8 +8,8 @@ import {scheduleGameAndStart} from "../services/TimerService";
 
 export const initHome = (host : HTMLElement):void => {
     removeAllChildNodes(host).then(()=>{
-       while (TICKETS.length > 0)
-            TICKETS.pop();
+       /*while (TICKETS.length > 0)
+            TICKETS.pop();*/
         TICKET_TO_BE_POPULATED.numbers = [];
 
         const sector1 = createDiv(host,'sector1');

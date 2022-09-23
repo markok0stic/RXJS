@@ -17,6 +17,14 @@ body{
     border-radius: 10px;
     flex-wrap: wrap;
 }
+.bigTimer{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    z-index: 1000;
+    opacity: 70%;
+    background-color: rgba(0, 0, 0, 0.23);
+}
 .sector1,.sector2{
     min-width: 300px;
     display: flex;

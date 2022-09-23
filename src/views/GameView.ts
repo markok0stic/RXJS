@@ -1,7 +1,7 @@
 import {createDiv, createInput, createLabel, removeAllChildNodes} from "../helpers/HelperViews";
 import {
     ARRAY_IDS,
-    MIN_BET,
+    MIN_BET, MULTIPLIERS,
     SUBJECT,
     TICKET_TO_BE_POPULATED,
     TICKETS,
@@ -9,7 +9,8 @@ import {
 } from "../config";
 import {Ball} from "../models/Ball";
 import {fromEvent, map, Observable, startWith, Subject} from "rxjs";
-import {listenBigBall, listenTicket} from "../services/GameService";
+import {listenBigBall, prepareTickets} from "../services/GameService";
+import * as events from "events";
 
 export const initGameView = (host: HTMLElement) : void =>{
     removeAllChildNodes(host).then(()=>{
@@ -86,7 +87,6 @@ export const drawMiddleBall = (host:HTMLElement, multiplier:number) : void =>{
         createDiv(divBalls,'g-bhl').setAttribute('ball-id',i.toString());
     }
     listenBigBall()
-    listenTicket();
 }
 
 export const drawBallInBigBall = (ball:Ball) : void => {
@@ -115,8 +115,7 @@ export const drawIntoBallHolder = (ball: Ball, phIndex:number) : void => {
         }
     })
 }
-export const markNumberOnTicket = (numberToMark: number) : Promise<void> => {
-    return new Promise<void> ((res)=>{
+export const markNumberOnTicket = (numberToMark: number) : void =>  {
         let tickets = document.querySelectorAll('div[t-id]')
         tickets.forEach(el=>{
             el.querySelectorAll('.t-nums').forEach(num=>{
@@ -127,26 +126,25 @@ export const markNumberOnTicket = (numberToMark: number) : Promise<void> => {
                 }
             })
         })
-        res()
-    })
 }
 
-export const checkIfPassedTicket = (tid: number) : Promise<boolean> => {
-    return new Promise<boolean> ((res)=>{
+export const checkIfPassedTicket = (multip : number) : void => {
         let tickets = document.querySelectorAll('div[t-id]')
         tickets.forEach(el=>{
-            if (parseInt(el.getAttribute('t-id')) === tid)
-            {
                 let t = el as HTMLElement
-                if (el.querySelectorAll('.t-marked-num').length == 6)
+                let id = parseInt(t.getAttribute('t-id'))
+                if (el.querySelectorAll('.t-marked-num').length == 6 && !el.classList.contains('t-passed'))
                 {
                     t.classList.add('t-passed');
-                    res(true)
+                    TICKETS.forEach(ticket=>{
+                        if (ticket.num == id)
+                        {
+                            ticket.passed = true;
+                            updateUserBalance(ticket.bet * MULTIPLIERS[multip])
+                        }
+                    })
                 }
-            }
         })
-        res(false)
-    })
 }
 
 export const setTicketNotPassed = () : void => {
@@ -159,8 +157,12 @@ export const setTicketNotPassed = () : void => {
     })
 }
 
-export const updateUserBalance = () : void => {
+export const updateUserBalance = (won: number) : void => {
     let bal = document.querySelector('.r-title') as HTMLElement
-    console.log(USER.balance);
-    bal.innerHTML = 'Balance: '+ USER.balance.toString();
+    bal.innerHTML = 'Balance: '+ (USER.balance+won).toString();
+    USER.balance+=won
+}
+
+export const disableInterface = () : void => {
+    createDiv((document.body.querySelector('.mainContainer'))as HTMLElement,'bigTimer')
 }

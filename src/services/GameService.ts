@@ -1,9 +1,9 @@
 import {debounceTime, filter, from, fromEvent, interval, map, Observable, Subscription, take, zip} from "rxjs";
-import {BALL_INTERVAL, MULTIPLIERS, ROUND_TIME, SUBJECT, SUBJECT_TICKET, TICKETS, USER} from "../config";
+import {BALL_INTERVAL, MULTIPLIERS, ROUND_TIME, SUBJECT, TICKETS, USER} from "../config";
 import {arrayRemove, arrayShuffle, getRandomNumber, randomNumber} from "../helpers/HelperLogic";
 import {Ticket} from "../models/Ticket";
 import {
-    checkIfPassedTicket,
+    checkIfPassedTicket, disableInterface,
     drawBallInBigBall,
     drawIntoBallHolder,
     initGameView,
@@ -31,8 +31,7 @@ export const startDraw = () : Subscription => {
        }, BALL_INTERVAL)
    }).pipe(
        take(35),
-       map(x=>x as Ball)
-   )
+       map(x=>x as Ball))
        .subscribe((x)=>{
            drawBallInBigBall(x)
            if (array.length  === 13)
@@ -59,8 +58,7 @@ export const prepareUserData = (el: HTMLElement) : Promise<Ticket> => {
     })
 }
 
-export const prepareTickets = () :Promise<void> =>{
-    return new Promise ((res)=>{
+export const prepareTickets = () : void =>{
         let divs = document.querySelectorAll('.b-conf-active')
 
         divs.forEach(el=>{
@@ -68,17 +66,12 @@ export const prepareTickets = () :Promise<void> =>{
                 TICKETS.push(t)
             })
         });
-        res()})
 }
 
 export const startGame = () : void => {
-    prepareTickets().then(()=>{
         initGameView(document.querySelector('.mainContainer'));
-        setTimeout(()=>{
-            startDraw()
-            startTimer(ROUND_TIME).subscribe();
-        },1000)
-    });
+        startDraw()
+        startTimer(ROUND_TIME).subscribe();
 }
 
 export const listenBigBall = ()  : void => {
@@ -86,31 +79,14 @@ export const listenBigBall = ()  : void => {
     SUBJECT.subscribe(ball=>{
         phIndex++;
         ball.num = phIndex;
-        SUBJECT_TICKET.next(ball)
         drawIntoBallHolder(ball,phIndex);
+        markNumberOnTicket(ball.id)
+        checkIfPassedTicket(ball.num);
     })
 }
 
-export const listenTicket = (): void => {
-    SUBJECT_TICKET.subscribe(ball=>{
-            TICKETS.forEach(el => {
-                if (!el.passed) {
-                    if (el.numbers.includes(ball.id)) {
-                        markNumberOnTicket(ball.id).then(() => {
-                            checkIfPassedTicket(el.num).then(res => {
-                                if (res === true) {
-                                    USER.balance += el.bet * MULTIPLIERS[ball.num - 1]
-                                    console.log(ball.num)
-                                    console.log(el.bet)
-                                    console.log(MULTIPLIERS[ball.num - 1])
-                                    updateUserBalance();
-                                    el.passed = true;
-                                }
-                            })
-
-                        })
-                    }
-                }
-            })
-    })
+export const disableInterfaceAndPrepareTickets = () : void => {
+    disableInterface()
+    prepareTickets()
 }
+

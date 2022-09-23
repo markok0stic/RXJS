@@ -1,7 +1,7 @@
 import {filter, map, Observable, switchMap, timer} from 'rxjs';
 import {takeWhile, tap} from 'rxjs/operators';
 import {SEC, TIME} from "../config";
-import {startGame} from "./GameService";
+import {disableInterfaceAndPrepareTickets, startGame} from "./GameService";
 import {updateDomTimer} from "../views/HomeView";
 
 
@@ -17,7 +17,11 @@ export const remainingTimeUpdate = (seconds : number) : void => {
 }
 
 export const scheduleGameAndStart = () : void => {
-    startTimer(TIME).subscribe(x=>{ if (x <= 0) startGame()})
+    startTimer(10).subscribe(x=>{
+        if (x == 5){
+            disableInterfaceAndPrepareTickets()
+    } if(x<=0)
+        startGame()})
 }
 
 

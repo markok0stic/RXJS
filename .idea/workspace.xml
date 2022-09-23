@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e169b638-a27c-404d-b60d-e785968e807b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GameService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GameService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TicketService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TicketService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TimerService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TimerService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/GameView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/GameView.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/HomeView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HomeView.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2D7oD64vrYanSR2aI3LOBqqc6VP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pc/Documents/GitHub/RXJS&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/pc/Documents/GitHub/RXJS/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;GitIgnore&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist" />
+      <recent name="$PROJECT_DIR$/src/models" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="watch" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e169b638-a27c-404d-b60d-e785968e807b" name="Changes" comment="" />
+      <created>1660059361938</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660059361938</updated>
+      <workItem from="1660059363710" duration="283000" />
+      <workItem from="1660060075583" duration="4528000" />
+      <workItem from="1662206690456" duration="7265000" />
+      <workItem from="1662478010551" duration="4133000" />
+      <workItem from="1663167607566" duration="350000" />
+      <workItem from="1663256852151" duration="8486000" />
+      <workItem from="1663408516694" duration="25780000" />
+      <workItem from="1663444223310" duration="35000" />
+      <workItem from="1663494717562" duration="288000" />
+      <workItem from="1663495014413" duration="29698000" />
+      <workItem from="1663598138722" duration="2192000" />
+      <workItem from="1663845516976" duration="2649000" />
+      <workItem from="1663935206460" duration="2752000" />
+      <workItem from="1663939676425" duration="5435000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

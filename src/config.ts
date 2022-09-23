@@ -19,7 +19,7 @@ export const TICKETS : Ticket[] = []
 
 export const USER : User = {
     id : 1,
-    balance: 10000,
+    balance: 1000,
     name: "Marko"
 }
 
@@ -30,4 +30,3 @@ export const TIME:number = MINUTES * 60;
 export const ARRAY_IDS: number[][] = [[1,2,3,4,5,6,7,8],[9,10,11,12],[13,14,15],[16,17,18],[19,20,21,22],[23,24,25,26,27,28,29,30]]
 export const MULTIPLIERS: number[] = [0,0,0,0,0,10000,7500,5000,2500,1000,500,300,200,150,100,90,80,70,60,50,40,30,25,20,15,10,9,8,7,6,5,4,3,2,1];
 export const SUBJECT: Subject<Ball> = new Subject<Ball>();
-export const SUBJECT_TICKET : Subject<Ball> = new Subject<Ball>()
