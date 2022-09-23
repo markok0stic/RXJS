@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helpers/HelperViews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/HelperViews.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/GameService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GameService.ts" afterDir="false" />

@@ -154,7 +154,7 @@ export const removeEmptyTickets = (): void => {
     });
 }
 
-export const updateDomTimer = (sec: string, mins: string): void => {
-    document.querySelector('.minutes').innerHTML = mins;
-    document.querySelector('.seconds').innerHTML = sec;
+export const updateDomTimer = (vals: string[]): void => {
+    document.querySelector('.minutes').innerHTML = vals[0];
+    document.querySelector('.seconds').innerHTML = vals[2];
 }
