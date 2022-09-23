@@ -38,11 +38,3 @@ export const createCustomElement = (tagName: string, parent: HTMLElement, classN
     return el;
 }
 
-export const removeAllChildNodes = (parent: HTMLElement): Promise<void> => {
-    return new Promise ((res)=>{
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
-        }
-        res();
-    })
-}

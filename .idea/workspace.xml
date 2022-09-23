@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e169b638-a27c-404d-b60d-e785968e807b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/HelperLogic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/HelperViews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/HelperViews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/GameService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/GameService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TicketService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TicketService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TimerService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TimerService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/GameView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/GameView.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/HomeView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HomeView.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +98,7 @@
       <workItem from="1663598138722" duration="2192000" />
       <workItem from="1663845516976" duration="2649000" />
       <workItem from="1663935206460" duration="2752000" />
-      <workItem from="1663939676425" duration="5654000" />
+      <workItem from="1663939676425" duration="6235000" />
     </task>
     <servers />
   </component>
